@@ -1,4 +1,4 @@
-const productModel = require('../models/product.model')
+const productModel = require('../../db/models/product.model')
 class Product{
 
 }

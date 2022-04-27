@@ -1,4 +1,4 @@
-const userModel = require('../models/user.model')
+const userModel = require('../../db/models/user.model')
 class User{
     static register = async (req,res) => {
         try {
@@ -7,7 +7,7 @@ class User{
             res.status(200).send({
                 apiStatus: true,
                 data: userData,
-                message: 'done register ...'
+                message: 'done register'
             })
         } catch (error) {
             res.status(500).send({
@@ -17,7 +17,23 @@ class User{
             })
         }
     }
-
+    static login = async(req, res) => {
+        try {
+            const userData = await userModel.login(req.body.email, req.body.password)
+            const token = await userData.generateToken()
+            res.status(200).send({
+                apiStatus: true,
+                data: {user: userData, token},
+                message: 'Done register'
+            })
+        } catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e,
+                message: e.message
+            })
+        }
+    }
 }
 
 module.exports = User
