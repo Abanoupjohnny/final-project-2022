@@ -34,6 +34,13 @@ const userSchema = mongoose.Schema({
             required: true,
             trim: true,
         },
+        role: [
+            "admin",
+            "user",
+            {
+                required: true,
+            }
+        ],
         tokens: [
             {
                 token:{
@@ -42,9 +49,6 @@ const userSchema = mongoose.Schema({
                 }
             }
         ]
-    },
-    {
-        timestamp: true
     }
 )
 
