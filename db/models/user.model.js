@@ -63,6 +63,7 @@ userSchema.statics.login = async(email, password) => {
     if (!user) throw new Error ("Wrong Email")
     const matched = await bcryptjs.compare(password, user.password)
     if (!matched) throw new Error ("Wrong Password")
+    token = jwt.sign({ sub: user.id, role: user.role }, config.secret)
     return user
 }
 

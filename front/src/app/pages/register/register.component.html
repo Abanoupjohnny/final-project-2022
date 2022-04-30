@@ -1,0 +1,66 @@
+<div class="bg-dark d-flex align-items-center">
+    <div class="container py-4">
+        <div class="card mb-3 shadow-lg bg-body rounded">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/520x320.png/09f/fff" class="img-fluid rounded-start h-100" alt="log">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-header">
+                        <h5 class="card-title m-0">Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="userRegistrationFormData" (ngSubmit)="handleRegistration()">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput0" placeholder="john" formControlName="firstName">
+                                <label for="floatingInput0">First Name</label>
+                                <div class="alert alert-danger my-3" *ngIf="firstName?.invalid">
+                                    <div *ngIf="firstName?.errors?.['required']">
+                                        First Name Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput1" placeholder="johnny"  formControlName="lastName">
+                                <label for="floatingInput1">Last Name</label>
+                                <div class="alert alert-danger my-3" *ngIf="lastName?.invalid">
+                                    <div *ngIf="lastName?.errors?.['required']">
+                                        Last Name Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput2" placeholder="01234567890" formControlName="phone">
+                                <label for="floatingInput2">Phone Number (+20)</label>
+                                <div class="alert alert-danger my-3" *ngIf="phone?.invalid">
+                                    <div *ngIf="phone?.errors?.['required']">
+                                        Phone Number Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput3" placeholder="name@example.com" formControlName="email">
+                                <label for="floatingInput3">Email address</label>
+                                <div class="alert alert-danger my-3" *ngIf="email?.invalid">
+                                    <div *ngIf="email?.errors?.['required']">
+                                        E-Mail Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                                <label for="floatingPassword">Password</label>
+                                <div class="alert alert-danger my-3" *ngIf="password?.invalid">
+                                    <div *ngIf="password?.errors?.['required']">
+                                        Password Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mt-5 ms-0 mb-4 float-end">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
